@@ -4,13 +4,15 @@ create procedure ques13(num int)
 	begin
 		declare x int;
 		declare word varchar(2000);
+		declare rev int;
 		set x :=0;
+		set rev := (select fun_rev(num));
 		set word :="";
 		
 		lbl: loop
-			if num != 0 then
-				set x := num%10;
-				set num := num div 10;
+			if rev != 0 then
+				set x := rev%10;
+				set rev := rev div 10;
 				if x = 0 then
 					set word := concat("zero"," ",word);
 				else if x = 1 then
